@@ -30,6 +30,8 @@ app = Flask(__name__)
 
 @app.route("/", methods=["POST"])
 def index():
+    BUCKET_IN = "erm-predict-input"
+    BUCKET_OUT = "erm-predict-output"
     envelope = request.get_json()
     if not envelope:
         msg = "no Pub/Sub message received"
