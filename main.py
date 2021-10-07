@@ -30,6 +30,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["POST"])
 def index():
+    print("starting index-------------")
     BUCKET_IN = "erm-predict-input"
     BUCKET_OUT = "erm-predict-output"
     envelope = request.get_json()
@@ -63,6 +64,7 @@ def index():
 
 
 if __name__ == "__main__":
+    print("starting main#######################")
     os.system('gcsfuse erm-predict-input /app')
     filelist = os.system('ls $pwd/input/')
     print(filelist)
@@ -72,4 +74,5 @@ if __name__ == "__main__":
 
     # app.run for local hosting
     # Gunicorn entrypoint will be set in dockerfile
+    print("about to run app")
     app.run(host="127.0.0.1", port=PORT, debug=True)
