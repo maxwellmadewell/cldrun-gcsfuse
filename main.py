@@ -52,7 +52,7 @@ def index():
     download_blob(BUCKET_IN, "input/raw/simple.csv", "/app/output/raw.csv")
     filename = dt.now().strftime("%Y%m%d-%H%M%S")
     upload_blob(BUCKET_OUT, "/app/output/raw.csv", filename)
-
+    print("saved to buckets programmatically")
     gs_df.to_csv("gs://erm-predict-input/output/_latest.csv")
     print(f"Completed engine {name}.")
 
