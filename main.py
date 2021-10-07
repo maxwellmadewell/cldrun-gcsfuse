@@ -60,8 +60,8 @@ def index():
 
 
 if __name__ == "__main__":
-    BUCKET_IN = os.environ['BUCKET-IN']
-    BUCKET_OUT = os.environ['BUCKET-OUT']
+    BUCKET_IN = "erm-predict-input"
+    BUCKET_OUT = "erm-predict-output"
     PORT = int(os.getenv("PORT")) if os.getenv("PORT") else 8080
 
     # app.run for local hosting
