@@ -31,6 +31,9 @@ app = Flask(__name__)
 @app.route("/", methods=["POST"])
 def index():
     print("starting index-------------")
+    os.system('gcsfuse erm-predict-input /app')
+    filelist = os.system('ls $pwd/input/')
+    print(filelist)
     BUCKET_IN = "erm-predict-input"
     BUCKET_OUT = "erm-predict-output"
     envelope = request.get_json()
