@@ -63,6 +63,7 @@ def index():
 
 
 if __name__ == "__main__":
+    os.system('gcsfuse erm-predict-input /app')
     BUCKET_IN = "erm-predict-input"
     BUCKET_OUT = "erm-predict-output"
     PORT = int(os.getenv("PORT")) if os.getenv("PORT") else 8080

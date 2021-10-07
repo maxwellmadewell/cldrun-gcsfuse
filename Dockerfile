@@ -11,6 +11,11 @@ COPY requirements.txt ./
 
 # Install production dependencies.
 RUN pip install -r requirements.txt
+RUN export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
+RUN echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | tee /etc/apt/sources.list.d/gcsfuse.list
+RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+RUN apt-get -y install gcsfuse
+
 
 ENV APP_HOME /app
 WORKDIR $APP_HOME
